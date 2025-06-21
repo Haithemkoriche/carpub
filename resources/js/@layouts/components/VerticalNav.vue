@@ -9,6 +9,17 @@ import {
 } from '@layouts/components'
 import { useLayoutConfigStore } from '@layouts/stores/config'
 import { injectionKeyIsVerticalNavHovered } from '@layouts/symbols'
+import { filterNavByRole } from '@/navigation/filterNavigation'
+
+// Get role from localStorage
+const userRole = computed(() => {
+  return localStorage.getItem('userRole') || 'guest'
+})
+
+// Filter nav items
+const filteredNavItems = computed(() =>
+  filterNavByRole(props.navItems, userRole.value)
+)
 
 const props = defineProps({
   tag: {
@@ -140,11 +151,12 @@ const hideTitleAndIcon = configStore.isVerticalNavMini(isHovered)
         @ps-scroll-y="handleNavScroll"
       >
         <Component
-          :is="resolveNavItemComponent(item)"
-          v-for="(item, index) in navItems"
-          :key="index"
-          :item="item"
-        />
+  :is="resolveNavItemComponent(item)"
+  v-for="(item, index) in filteredNavItems"
+  :key="index"
+  :item="item"
+/>
+
       </PerfectScrollbar>
     </slot>
     <slot name="after-nav-items" />

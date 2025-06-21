@@ -1,4 +1,3 @@
-/* stylelint-disable scss/load-partial-extension */
 <script setup>
 import AuthProvider from '@/views/pages/authentication/AuthProvider.vue'
 import { useGenerateImageVariant } from '@core/composable/useGenerateImageVariant'
@@ -10,6 +9,9 @@ import authV2MaskDark from '@images/pages/misc-mask-dark.png'
 import authV2MaskLight from '@images/pages/misc-mask-light.png'
 import { VNodeRenderer } from '@layouts/components/VNodeRenderer'
 import { themeConfig } from '@themeConfig'
+import { ref } from 'vue'
+import axios from 'axios'
+import { useRouter } from 'vue-router'
 
 definePage({
   meta: {
@@ -27,6 +29,42 @@ const form = ref({
 const isPasswordVisible = ref(false)
 const authThemeImg = useGenerateImageVariant(authV2LoginIllustrationLight, authV2LoginIllustrationDark, authV2LoginIllustrationBorderedLight, authV2LoginIllustrationBorderedDark, true)
 const authThemeMask = useGenerateImageVariant(authV2MaskLight, authV2MaskDark)
+
+const router = useRouter()
+
+async function login() {
+  try {
+    const response = await axios.post('/api/login', {
+      email: form.value.email,
+      password: form.value.password,
+    })
+
+    const token = response.data.token
+    const user = response.data.user
+
+    // Store token in localStorage
+    localStorage.setItem('token', token)
+    localStorage.setItem('user', JSON.stringify(user))
+    localStorage.setItem('userRole', response.data.user.role)
+
+    // Set Axios Authorization header globally
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
+
+
+    // Redirect user based on role
+    if (user.role === 'admin') {
+      router.push('/admin/dashboard')
+    } else if (user.role === 'proprietaire') {
+      router.push('/owner/OwnerDashboard')
+    } else if (user.role === 'entreprise') {
+      router.push('/company/CompanyDashboard')
+    }
+  } catch (error) {
+    console.error(error)
+    alert(error.response?.data?.message || 'Login failed')
+  }
+}
+
 </script>
 
 <template>
@@ -88,7 +126,7 @@ const authThemeMask = useGenerateImageVariant(authV2MaskLight, authV2MaskDark)
           </p>
         </VCardText>
         <VCardText>
-          <VForm @submit.prevent="() => {}">
+          <VForm @submit.prevent="login">
             <VRow>
               <!-- email -->
               <VCol cols="12">
