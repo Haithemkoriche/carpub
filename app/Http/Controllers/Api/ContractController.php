@@ -80,8 +80,8 @@ class ContractController extends Controller
     {
         $contract->load(['vehicle.user', 'campaign.company', 'garage']);
 
-        $pdf = Pdf::loadView('contracts.pdf', compact('contract'));
+        // $pdf = Pdf::loadView('contracts.pdf', compact('contract'));
 
-        return $pdf->download('contrat-' . $contract->id . '.pdf');
+        // return $pdf->download('contrat-' . $contract->id . '.pdf');
     }
 }

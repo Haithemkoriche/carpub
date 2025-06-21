@@ -1,3 +1,4 @@
+/* stylelint-disable scss/load-partial-extension */
 <script setup>
 import AuthProvider from '@/views/pages/authentication/AuthProvider.vue'
 import { useGenerateImageVariant } from '@core/composable/useGenerateImageVariant'
@@ -173,5 +174,6 @@ const authThemeMask = useGenerateImageVariant(authV2MaskLight, authV2MaskDark)
 </template>
 
 <style lang="scss">
+/* stylelint-disable-next-line scss/load-partial-extension */
 @use "@core-scss/template/pages/page-auth.scss";
 </style>
