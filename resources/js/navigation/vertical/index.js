@@ -1,177 +1,177 @@
 // export default [
 //   {
-//     title: 'Home',
+//     title: 'Accueil',
 //     to: { name: 'root' },
 //     icon: { icon: 'tabler-smart-home' },
 //   },
 //   {
-//     title: 'Second page',
+//     title: 'Deuxième page',
 //     to: { name: 'second-page' },
 //     icon: { icon: 'tabler-file' },
 //   },
 //   {
-//     title: 'Login',
+//     title: 'Connexion',
 //     to: { name: 'login' },
 //     icon: { icon: 'tabler-login' },
 //   },
 //   {
-//     title: 'Register',
+//     title: 'Inscription',
 //     to: { name: 'register' },
 //     icon: { icon: 'tabler-login' },
 //   },
 // ]
 export default [
-  // 🔐 Shared Pages (All Roles)
+  // 🔐 Pages partagées (Tous rôles)
   {
-    title: 'Login',
+    title: 'Connexion',
     to: { name: 'login' },
     icon: { icon: 'tabler-login' },
     role: ['guest'],
   },
   {
-    title: 'Register',
+    title: 'Inscription',
     to: { name: 'register' },
     icon: { icon: 'tabler-user-plus' },
     role: ['guest'],
   },
   // {
-  //   title: 'Forgot Password',
+  //   title: 'Mot de passe oublié',
   //   to: { name: 'ForgotPassword' },
   //   icon: { icon: 'tabler-lock' },
   //   role: ['guest'],
   // },
   // {
-  //   title: 'Help Center',
+  //   title: 'Centre d\'aide',
   //   to: { name: 'HelpCenter' },
   //   icon: { icon: 'tabler-help-circle' },
   //   role: ['admin', 'proprietaire', 'entreprise'],
   // },
   // {
-  //   title: 'Settings',
+  //   title: 'Paramètres',
   //   to: { name: 'Settings' },
   //   icon: { icon: 'tabler-settings' },
   //   role: ['admin', 'proprietaire', 'entreprise'],
   // },
   // {
-  //   title: 'Terms & Conditions',
+  //   title: 'Conditions générales',
   //   to: { name: 'TermsConditions' },
   //   icon: { icon: 'tabler-file-description' },
   //   role: ['admin', 'proprietaire', 'entreprise'],
   // },
 
-  // 🧑‍💼 Admin Pages
+  // 🧑‍💼 Pages Admin
   {
-    title: 'Admin',
+    title: 'Administration',
     icon: { icon: 'tabler-shield-check' },
     role: ['admin'],
     children: [
       {
-        title: 'Dashboard',
+        title: 'Tableau de bord',
         to: { name: 'admin-dashboard' },
       },
       {
-        title: 'Add Campaign',
+        title: 'Ajouter une campagne',
         to: { name: 'admin-AddCampaign' },
       },
       {
-        title: 'Admin Panel',
+        title: 'Panneau d\'administration',
         to: { name: 'admin-AdminPanel' },
       },
       {
-        title: 'Garage Manager',
+        title: 'Gestionnaire de garage',
         to: { name: 'admin-GarageManager' },
       },
       {
-        title: 'Vehicle Manager',
+        title: 'Gestionnaire de véhicules',
         to: { name: 'admin-VehicleManager' },
       },
       {
-        title: 'Contract Manager',
+        title: 'Gestionnaire de contrats',
         to: { name: 'admin-ContractManager' },
       },
       {
-        title: 'Payment Manager',
+        title: 'Gestionnaire de paiements',
         to: { name: 'admin-PaymentManager' },
       },
       {
-        title: 'Companies',
+        title: 'Entreprises',
         to: { name: 'admin-CompanyList' },
       },
       {
-        title: 'Users',
+        title: 'Utilisateurs',
         to: { name: 'admin-UserManager' },
       },
     ],
   },
 
-  // 🚗 Propriétaire (Owner) Pages
+  // 🚗 Pages Propriétaire
   {
     title: 'Propriétaire',
     icon: { icon: 'tabler-car' },
     role: ['proprietaire'],
     children: [
       {
-        title: 'Dashboard',
+        title: 'Tableau de bord',
         to: { name: 'owner-OwnerDashboard' },
       },
       {
-        title: 'Register Vehicle',
+        title: 'Enregistrer un véhicule',
         to: { name: 'owner-RegisterVehicle' },
       },
       {
-        title: 'My Profile',
+        title: 'Mon profil',
         to: { name: 'owner-Profile' },
       },
       {
-        title: 'Vehicle Status',
+        title: 'Statut du véhicule',
         to: { name: 'owner-VehicleStatus' },
       },
       {
-        title: 'My Contracts',
+        title: 'Mes contrats',
         to: { name: 'owner-ContractView' },
       },
       {
-        title: 'Payment History',
+        title: 'Historique des paiements',
         to: { name: 'owner-PaymentHistory' },
       },
     ],
   },
 
-  // 🏢 Entreprise (Company) Pages
+  // 🏢 Pages Entreprise
   {
     title: 'Entreprise',
     icon: { icon: 'tabler-building' },
     role: ['entreprise'],
     children: [
       {
-        title: 'Dashboard',
+        title: 'Tableau de bord',
         to: { name: 'company-CompanyDashboard' },
       },
       {
-        title: 'Profile',
+        title: 'Profil',
         to: { name: 'company-CompanyProfile' },
       },
       {
-        title: 'Campaigns',
+        title: 'Campagnes',
         to: { name: 'company-CampaignList' },
       },
       {
-        title: 'Campaign Vehicles',
+        title: 'Véhicules de campagne',
         to: { name: 'company-CampaignVehicles' },
       },
     ],
   },
 
-  // 🔒 Hidden/Access Pages
+  // 🔒 Pages cachées/accès
   // {
-  //   title: 'Access Denied',
+  //   title: 'Accès refusé',
   //   to: { name: 'AccessDenied' },
   //   icon: { icon: 'tabler-ban' },
   //   role: ['admin', 'proprietaire', 'entreprise'],
   //   disabled: true,
   // },
   // {
-  //   title: '404 Not Found',
+  //   title: '404 Non trouvé',
   //   to: { name: 'NotFound' },
   //   icon: { icon: 'tabler-alert-triangle' },
   //   role: ['admin', 'proprietaire', 'entreprise'],
